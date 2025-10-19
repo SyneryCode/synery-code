@@ -30,23 +30,23 @@ export function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
+    { icon: Github, href: 'https://github.com/SyneryCode', label: 'GitHub' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' }
+    { icon: Twitter, href: 'https://x.com/Synerycode?t=vGhl8uVi_YpIk-dE4P5cfw&s=09', label: 'Twitter' }
   ];
 
   return (
     <footer className="bg-[#0A1A2F] text-white relative overflow-hidden">
-      {/* Background Pattern */}
+
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#6EC1E4]/20 to-transparent"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Main Footer Content */}
+
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Company Info */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ export function Footer() {
                 {t('footer.description')}
               </p>
               
-              {/* Contact Info */}
+
               <div className="space-y-3">
                 <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   <Mail className="w-5 h-5 text-[#6EC1E4] flex-shrink-0" />
@@ -83,7 +83,7 @@ export function Footer() {
               </div>
             </motion.div>
 
-            {/* Services */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +108,6 @@ export function Footer() {
               </ul>
             </motion.div>
 
-            {/* Company Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -136,7 +135,7 @@ export function Footer() {
                 ))}
               </ul>
 
-              {/* Social Links */}
+
               <div className="mt-6">
                 <h4 className="text-sm text-gray-400 mb-3">Follow Us</h4>
                 <div className={`flex gap-3 ${isRTL ? 'justify-end' : 'justify-start'}`}>
@@ -158,7 +157,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

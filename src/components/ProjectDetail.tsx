@@ -21,7 +21,7 @@ export interface Project {
   timeline?: string;
   teamSize?: string;
   achievements?: string[];
-  designImages?: string[]; // For UI/UX design projects
+  designImages?: string[]; 
 }
 
 interface ProjectDetailProps {
@@ -115,10 +115,10 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
         </div>
       </div>
 
-      {/* Project Details */}
+
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
+
           <div className="lg:col-span-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -136,7 +136,6 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
                 </CardContent>
               </Card>
 
-              {/* Design Images Gallery for UI/UX Projects */}
               {project.category === 'design' && project.designImages && project.designImages.length > 0 && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -202,9 +201,8 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
             </motion.div>
           </div>
 
-          {/* Sidebar */}
           <div className="space-y-6">
-            {/* Project Info */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -249,7 +247,7 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
               </Card>
             </motion.div>
 
-            {/* Technologies */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -274,7 +272,7 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
               </Card>
             </motion.div>
 
-            {/* Category */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

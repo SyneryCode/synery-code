@@ -28,7 +28,6 @@ export function PortfolioSection({ onBack, onProjectClick }: PortfolioSectionPro
     { key: 'design', icon: Palette }
   ];
 
-  // Filtered projects based on category
   const filteredProjects = selectedCategory === 'all' 
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
@@ -155,7 +154,7 @@ export function PortfolioSection({ onBack, onProjectClick }: PortfolioSectionPro
             >
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#6EC1E4] to-white">
-                  20+
+                  10+
                 </div>
                 <div className="text-sm text-white/60 mt-2">
                   {t('portfolio.projectsCompleted')}

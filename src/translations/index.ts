@@ -1,6 +1,5 @@
 export const translations = {
   en: {
-    // Navigation
     nav: {
       home: 'Home',
       services: 'Services',
@@ -9,12 +8,11 @@ export const translations = {
       getStarted: 'Get Started',
     },
     
-    // Hero Section
     hero: {
       title: 'Transform Your Digital Vision Into Reality',
       subtitle: 'Professional Digital Solutions',
       projectsDelivered: 'Projects Delivered',
-      affordablePricing: 'Affordable Pricing',
+      happyClients: 'Happy Clients',
       supportAvailable: 'Support Available',
       description: 'Professional web development, innovative design, and cutting-edge solutions for businesses ready to dominate the digital landscape.',
       ctaTitle: 'Ready to Transform Your Digital Presence?',
@@ -23,7 +21,6 @@ export const translations = {
       ctaSecondary: 'View Our Work',
     },
     
-    // Services Section
     services: {
       title: 'Our Services',
       subtitle: 'Comprehensive digital solutions tailored to your business needs',
@@ -41,14 +38,13 @@ export const translations = {
       },
     },
     
-    // About Section
     about: {
       title: 'Why Choose Us',
       subtitle: 'Your Trusted Technology Partner',
       stats: {
         yearsExperience: 'Years Experience',
         projectsCompleted: 'Projects Completed',
-        affordablePricing: 'Affordable Pricing',
+        happyClients: 'Happy Clients',
         successRate: 'Success Rate',
       },
       featuresTitle: 'What Sets Us Apart',
@@ -72,7 +68,7 @@ export const translations = {
       achievements: {
         award: 'Award-winning digital solutions',
         certified: 'Certified development team',
-        iso: '100% Local Software Engineering Team',
+        iso: 'ISO 9001:2015 Quality Management',
         support: '24/7 technical support',
         agile: 'Agile development methodology',
         maintenance: 'Post-launch maintenance & support',
@@ -97,7 +93,6 @@ export const translations = {
       },
     },
     
-    // Contact Section
     contact: {
       title: 'Get In Touch',
       subtitle: 'Let\'s Start a Conversation',
@@ -109,6 +104,8 @@ export const translations = {
         fullNamePlaceholder: 'Your full name',
         email: 'Email Address',
         emailPlaceholder: 'your.email@example.com',
+        phone: 'Phone Number',
+        phonePlaceholder: 'Enter your phone number',
         message: 'Message/Request',
         messagePlaceholder: 'Tell us about your project...',
         submit: 'Send Request',
@@ -119,7 +116,7 @@ export const translations = {
       },
       info: {
         email: 'info@synerycode.com',
-        phone: '+1 (555) 123-4567',
+        phone: '+963 955 009595',
         address: 'Remote Team',
         emailLabel: 'Email',
         phoneLabel: 'Phone',
@@ -127,6 +124,15 @@ export const translations = {
         emailDescription: 'Send us an email anytime!',
         phoneDescription: 'Mon-Fri from 8am to 5pm',
         addressDescription: 'Serving clients worldwide',
+      },
+      validation: {
+        fullNameRequired: 'Full name is required',
+        emailRequired: 'Email address is required',
+        emailInvalid: 'Please enter a valid email address',
+        phoneRequired: 'Phone number is required',
+        phoneInvalid: 'Please enter a valid phone number',
+        messageRequired: 'Message is required',
+        messageTooShort: 'Message must be at least 10 characters long',
       },
       whyChoose: {
         title: 'Why Choose Synery Code?',
@@ -137,33 +143,13 @@ export const translations = {
       },
     },
     
-    // Portfolio Section
     portfolio: {
       title: 'Our Portfolio',
       subtitle: 'Explore our latest projects and see how we\'ve helped businesses transform their digital presence',
       viewProject: 'View Project',
-      viewDetails: 'View Details',
-      liveDemo: 'Live Demo',
       sourceCode: 'Source Code',
-      viewCode: 'View Code',
       technologies: 'Technologies Used',
       viewAll: 'View All Projects',
-      backToPortfolio: 'Back to Portfolio',
-      back: 'Back',
-      learnMore: 'Learn More',
-      projectOverview: 'Project Overview',
-      projectInfo: 'Project Info',
-      timeline: 'Timeline',
-      teamSize: 'Team Size',
-      keyAchievements: 'Key Achievements',
-      designGallery: 'Design Gallery',
-      featured: 'Featured',
-      category: 'Category',
-      noProjects: 'No Projects Found',
-      noProjectsInCategory: 'No projects in this category',
-      projectsCompleted: 'Projects Completed',
-      happyClients: 'Happy Clients',
-      successRate: 'Success Rate',
       categories: {
         all: 'All Projects',
         web: 'Web Development',
@@ -171,20 +157,40 @@ export const translations = {
         design: 'UI/UX Design',
         ecommerce: 'E-commerce',
       },
+      liveDemo: 'Live Demo',
+      noProjects: 'No projects found in this category.',
+      cta: {
+        title: 'Ready to Start Your Project?',
+        subtitle: "Let's create something amazing together. Contact us to discuss your project.",
+        button: 'Get In Touch',
+      },
     },
     
-    // Footer
     footer: {
       description: 'Professional web development and digital solutions for modern businesses.',
       quickLinks: 'Quick Links',
       services: 'Services',
       contact: 'Contact',
+      followUs: 'Follow Us',
+      servicesList: {
+        website: 'Website Development',
+        mobile: 'Mobile App Development',
+        uiux: 'UI/UX Design',
+        ecommerce: 'E-commerce Solutions',
+      },
+      social: {
+        github: 'GitHub',
+        linkedin: 'LinkedIn',
+        twitter: 'Twitter',
+      },
+      privacyPolicy: 'Privacy Policy',
+      terms: 'Terms of Service',
+      cookies: 'Cookie Policy',
       copyright: '© 2024 Synery Code. All rights reserved.',
     },
   },
   
   ar: {
-    // Navigation
     nav: {
       home: 'الرئيسية',
       services: 'الخدمات',
@@ -193,12 +199,11 @@ export const translations = {
       getStarted: 'ابدأ مشروعك',
     },
     
-    // Hero Section
     hero: {
       title: 'حوّل رؤيتك الرقمية إلى واقع',
       subtitle: 'حلول رقمية احترافية',
-      projectsDelivered: 'مشروع مكتمل',
-      affordablePricing: 'أسعار تناسب ميزانيتك',
+      projectsDelivered: 'مشروع منجز',
+      happyClients: 'عميل راضٍ',
       supportAvailable: 'دعم متاح',
       description: 'تطوير ويب احترافي، تصميم مبتكر، وحلول متطورة للشركات الجاهزة للهيمنة على المشهد الرقمي.',
       ctaTitle: 'جاهز لتحويل حضورك الرقمي؟',
@@ -207,7 +212,6 @@ export const translations = {
       ctaSecondary: 'اطلع على أعمالنا',
     },
     
-    // Services Section
     services: {
       title: 'خدماتنا',
       subtitle: 'حلول رقمية شاملة مصممة خصيصاً لاحتياجات عملك',
@@ -225,14 +229,13 @@ export const translations = {
       },
     },
     
-    // About Section
     about: {
       title: 'لماذا تختارنا',
       subtitle: 'شريكك التقني الموثوق',
       stats: {
-        yearsExperience: 'سنوات خبرة',
+        yearsExperience: 'سنة خبرة',
         projectsCompleted: 'مشروع مكتمل',
-        affordablePricing: 'أسعار تناسب ميزانيتك',
+        happyClients: 'عميل راضٍ',
         successRate: 'معدل نجاح',
       },
       featuresTitle: 'ما يميزنا',
@@ -256,7 +259,7 @@ export const translations = {
       achievements: {
         award: 'حلول رقمية حائزة على جوائز',
         certified: 'فريق تطوير معتمد',
-        iso: 'فريق عمل محلي 100% من مهندسي البرمجيات',
+        iso: 'إدارة الجودة ISO 9001:2015',
         support: 'دعم تقني على مدار الساعة',
         agile: 'منهجية التطوير المرنة',
         maintenance: 'صيانة ودعم ما بعد الإطلاق',
@@ -281,7 +284,6 @@ export const translations = {
       },
     },
     
-    // Contact Section
     contact: {
       title: 'تواصل معنا',
       subtitle: 'لنبدأ محادثة',
@@ -293,6 +295,8 @@ export const translations = {
         fullNamePlaceholder: 'اسمك الكامل',
         email: 'عنوان البريد الإلكتروني',
         emailPlaceholder: 'your.email@example.com',
+        phone: 'رقم الهاتف',
+        phonePlaceholder: 'أدخل رقم هاتفك',
         message: 'الرسالة/الطلب',
         messagePlaceholder: 'أخبرنا عن مشروعك...',
         submit: 'إرسال الطلب',
@@ -302,8 +306,8 @@ export const translations = {
         sendAnother: 'إرسال رسالة أخرى',
       },
       info: {
-        email: 'info@synerycode.com',
-        phone: '+1 (555) 123-4567',
+        email: 'info@synerycode.com / support@synerycode.com',
+        phone: '+963 955 009595',
         address: 'فريق عن بُعد',
         emailLabel: 'البريد الإلكتروني',
         phoneLabel: 'الهاتف',
@@ -311,6 +315,15 @@ export const translations = {
         emailDescription: 'أرسل لنا بريدًا إلكترونيًا في أي وقت!',
         phoneDescription: 'الاثنين-الجمعة من 8 صباحًا إلى 5 مساءً',
         addressDescription: 'نخدم العملاء في جميع أنحاء العالم',
+      },
+      validation: {
+        fullNameRequired: 'الاسم الكامل مطلوب',
+        emailRequired: 'البريد الإلكتروني مطلوب',
+        emailInvalid: 'الرجاء إدخال عنوان بريد إلكتروني صالح',
+        phoneRequired: 'رقم الهاتف مطلوب',
+        phoneInvalid: 'الرجاء إدخال رقم هاتف صحيح',
+        messageRequired: 'الرسالة مطلوبة',
+        messageTooShort: 'يجب أن تكون الرسالة 10 أحرف على الأقل',
       },
       whyChoose: {
         title: 'لماذا تختار سينيري كود؟',
@@ -321,33 +334,13 @@ export const translations = {
       },
     },
     
-    // Portfolio Section
     portfolio: {
       title: 'معرض أعمالنا',
       subtitle: 'استكشف أحدث مشاريعنا وشاهد كيف ساعدنا الشركات في تحويل حضورها الرقمي',
       viewProject: 'عرض المشروع',
-      viewDetails: 'عرض التفاصيل',
-      liveDemo: 'عرض مباشر',
       sourceCode: 'الكود المصدري',
-      viewCode: 'عرض الكود',
       technologies: 'التقنيات المستخدمة',
       viewAll: 'عرض جميع المشاريع',
-      backToPortfolio: 'العودة للمعرض',
-      back: 'العودة',
-      learnMore: 'اعرف المزيد',
-      projectOverview: 'نظرة عامة على المشروع',
-      projectInfo: 'معلومات المشروع',
-      timeline: 'المدة الزمنية',
-      teamSize: 'حجم الفريق',
-      keyAchievements: 'الإنجازات الرئيسية',
-      designGallery: 'معرض التصميمات',
-      featured: 'مميز',
-      category: 'الفئة',
-      noProjects: 'لا توجد مشاريع',
-      noProjectsInCategory: 'لا توجد مشاريع في هذه الفئة',
-      projectsCompleted: 'مشروع منجز',
-      happyClients: 'عميل راضٍ',
-      successRate: 'معدل نجاح',
       categories: {
         all: 'جميع المشاريع',
         web: 'تطوير المواقع',
@@ -355,17 +348,50 @@ export const translations = {
         design: 'تصميم UI/UX',
         ecommerce: 'التجارة الإلكترونية',
       },
+      liveDemo: 'عرض مباشر',
+      noProjects: 'لا توجد مشاريع في هذه الفئة.',
+      cta: {
+        title: 'جاهز لبدء مشروعك؟',
+        subtitle: 'لننشئ شيئًا مذهلًا معًا. تواصل معنا لمناقشة مشروعك.',
+        button: 'تواصل معنا',
+      },
     },
     
-    // Footer
     footer: {
       description: 'تطوير ويب احترافي وحلول رقمية للشركات الحديثة.',
       quickLinks: 'روابط سريعة',
       services: 'خدمات',
       contact: 'اتصل بنا',
+      followUs: 'تابعنا',
+      servicesList: {
+        website: 'تطوير مواقع ويب',
+        mobile: 'تطوير تطبيقات الجوال',
+        uiux: 'تصميم واجهة وتجربة المستخدم',
+        ecommerce: 'حلول التجارة الإلكترونية',
+      },
+      social: {
+        github: 'GitHub',
+        linkedin: 'LinkedIn',
+        twitter: 'Twitter',
+      },
+      privacyPolicy: 'سياسة الخصوصية',
+      terms: 'شروط الخدمة',
+      cookies: 'سياسة الكوكيز',
       copyright: '© 2024 سينيري كود. جميع الحقوق محفوظة.',
     },
   },
 };
 
 export type TranslationKey = keyof typeof translations.en;
+export type Locale = keyof typeof translations;
+
+export function translate(key: string, locale: Locale = 'en') {
+  const keys = key.split('.');
+  let value: any = translations[locale];
+
+  for (const k of keys) {
+    value = value?.[k];
+  }
+
+  return value ?? key;
+}

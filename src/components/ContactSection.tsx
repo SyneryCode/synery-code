@@ -11,12 +11,14 @@ import { useTranslation } from '../hooks/useTranslation';
 interface FormData {
   fullName: string;
   email: string;
+  phone: string;
   message: string;
 }
 
 interface FormErrors {
   fullName?: string;
   email?: string;
+  phone?: string;
   message?: string;
 }
 
@@ -27,30 +29,38 @@ export function ContactSection() {
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     email: '',
+    phone: '',
     message: ''
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string>('');
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
     if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required';
+      newErrors.fullName = t('contact.validation.fullNameRequired');
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email address is required';
+      newErrors.email = t('contact.validation.emailRequired');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = t('contact.validation.emailInvalid');
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = t('contact.validation.phoneRequired');
+    } else if (!/^[\+]?[0-9\s\-\(\)]{8,}$/.test(formData.phone)) {
+      newErrors.phone = t('contact.validation.phoneInvalid');
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = t('contact.validation.messageRequired');
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters long';
+      newErrors.message = t('contact.validation.messageTooShort');
     }
 
     setErrors(newErrors);
@@ -59,21 +69,164 @@ export function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError('');
     
     if (!validateForm()) {
+      console.log('❌ [FORM VALIDATION FAILED]', errors);
       return;
     }
 
     setIsSubmitting(true);
     
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const cleanedPhone = formData.phone.replace(/[^\d+]/g, '');
+      
+      const payload = {
+        name: formData.fullName,
+        email: formData.email,
+        phone: cleanedPhone,
+        message: formData.message
+      };
+
+      // ⚡ الحل النهائي: استخدام URL مباشر في جميع البيئات
+      const isDevelopment = import.meta.env.DEV;
+      let apiUrl;
+
+      if (isDevelopment) {
+        // في development استخدم proxy
+        apiUrl = '/api/send';
+        console.log('🔵 [DEVELOPMENT MODE] Using proxy:', apiUrl);
+      } else {
+        // في production استخدم URL المباشر
+        apiUrl = 'https://syniery-code.onrender.com/api/send';
+        console.log('🟢 [PRODUCTION MODE] Using direct URL:', apiUrl);
+      }
+      
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => {
+        console.log('⏰ [REQUEST TIMEOUT]');
+        controller.abort();
+      }, 50000);
+
+      console.log('🎯 [API REQUEST]', {
+        environment: isDevelopment ? 'Development' : 'Production',
+        url: apiUrl,
+        payload: payload,
+        timestamp: new Date().toISOString()
+      });
+
+      const startTime = Date.now();
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+
+      const responseTime = Date.now() - startTime;
+      clearTimeout(timeoutId);
+
+      console.log('📨 [API RESPONSE]', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok,
+        responseTime: `${responseTime}ms`,
+        headers: Object.fromEntries(response.headers.entries()),
+        timestamp: new Date().toISOString()
+      });
+
+      if (!response.ok) {
+        let errorMessage = `خطأ في الإرسال (${response.status})`;
+        let errorDetails = {};
+        
+        try {
+          const errorText = await response.text();
+          console.error('❌ [API ERROR RESPONSE]', errorText);
+          
+          try {
+            const errorData = JSON.parse(errorText);
+            errorMessage = errorData.message || errorMessage;
+            errorDetails = errorData;
+          } catch {
+            errorDetails = { rawError: errorText };
+          }
+        } catch (textError) {
+          console.error('❌ [ERROR READING RESPONSE]', textError);
+        }
+        
+        console.error('❌ [API ERROR DETAILS]', errorDetails);
+        throw new Error(errorMessage);
+      }
+
+      // معالجة الرد الناجح
+      const responseText = await response.text();
+      console.log('📄 [RAW RESPONSE TEXT]', {
+        text: responseText,
+        length: responseText.length,
+        timestamp: new Date().toISOString()
+      });
+
+      let result;
+      try {
+        result = JSON.parse(responseText);
+        console.log('✅ [PARSED RESPONSE]', {
+          result: result,
+          timestamp: new Date().toISOString()
+        });
+      } catch (parseError) {
+        console.error('❌ [JSON PARSE ERROR]', {
+          error: parseError,
+          responseText: responseText,
+          timestamp: new Date().toISOString()
+        });
+        
+        // إذا كان الرد HTML، فهذا يعني مشكلة في التوجيه
+        if (responseText.includes('<!DOCTYPE html>') || responseText.includes('<html')) {
+          throw new Error('الخادم يعيد صفحة HTML بدلاً من JSON. تأكد من صحة endpoint الـ API.');
+        }
+        
+        throw new Error('رد غير صحيح من الخادم');
+      }
+
+      console.log('🎉 [FORM SUBMISSION SUCCESSFUL]', {
+        result: result,
+        responseTime: `${responseTime}ms`,
+        timestamp: new Date().toISOString()
+      });
+      
+      // نجاح الإرسال
       setIsSubmitted(true);
-      setFormData({ fullName: '', email: '', message: '' });
+      setFormData({ fullName: '', email: '', phone: '', message: '' });
       setErrors({});
+      
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('💥 [FORM SUBMISSION ERROR]', {
+        error: error instanceof Error ? {
+          name: error.name,
+          message: error.message,
+          stack: error.stack
+        } : error,
+        timestamp: new Date().toISOString()
+      });
+      
+      let errorMessage = t('contact.form.submissionError');
+      
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          errorMessage = 'انتهت مهلة الاتصال بالخادم (15 ثانية)';
+        } else if (error.message.includes('Failed to fetch')) {
+          errorMessage = 'فشل في الاتصال بالخادم. تأكد من الاتصال بالإنترنت.';
+        } else if (error.message.includes('CORS')) {
+          errorMessage = 'مشكلة في صلاحيات CORS. يرجى التواصل مع الدعم.';
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
+      setSubmitError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -84,26 +237,29 @@ export function ContactSection() {
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: undefined }));
     }
+    if (submitError) {
+      setSubmitError('');
+    }
   };
 
   const contactInfo = [
     {
       icon: Mail,
-      title: t('contact.info.emailLabel'),
+      titleKey: 'contact.info.emailLabel',
       details: t('contact.info.email'),
-      description: t('contact.info.emailDescription')
+      descriptionKey: 'contact.info.emailDescription'
     },
     {
       icon: Phone,
-      title: t('contact.info.phoneLabel'),
+      titleKey: 'contact.info.phoneLabel',
       details: t('contact.info.phone'),
-      description: t('contact.info.phoneDescription')
+      descriptionKey: 'contact.info.phoneDescription'
     },
     {
       icon: MapPin,
-      title: t('contact.info.addressLabel'),
+      titleKey: 'contact.info.addressLabel',
       details: t('contact.info.address'),
-      description: t('contact.info.addressDescription')
+      descriptionKey: 'contact.info.addressDescription'
     }
   ];
 
@@ -143,10 +299,10 @@ export function ContactSection() {
           >
             <div>
               <h3 className={`text-2xl sm:text-3xl text-white mb-6 ${isRTL ? 'rtl:text-right' : ''}`}>
-                {t('contact.title')}
+                {t('contact.info.title')}
               </h3>
               <p className={`text-gray-300 leading-relaxed mb-8 ${isRTL ? 'rtl:text-right' : ''}`}>
-                {t('contact.subtitle')}
+                {t('contact.info.description')}
               </p>
             </div>
 
@@ -154,7 +310,7 @@ export function ContactSection() {
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
                 <motion.div
-                  key={info.title}
+                  key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -167,9 +323,15 @@ export function ContactSection() {
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h4 className={`text-lg text-white mb-1 ${isRTL ? 'text-right' : ''}`}>{info.title}</h4>
-                      <p className={`text-[#6EC1E4] mb-1 ${isRTL ? 'text-right' : ''}`}>{info.details}</p>
-                      <p className={`text-sm text-gray-300 ${isRTL ? 'text-right' : ''}`}>{info.description}</p>
+                      <h4 className={`text-lg text-white mb-1 ${isRTL ? 'text-right' : ''}`}>
+                        {t(info.titleKey)}
+                      </h4>
+                      <p className={`text-[#6EC1E4] mb-1 ${isRTL ? 'text-right' : ''}`}>
+                        {info.details}
+                      </p>
+                      <p className={`text-sm text-gray-300 ${isRTL ? 'text-right' : ''}`}>
+                        {t(info.descriptionKey)}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -184,21 +346,21 @@ export function ContactSection() {
               viewport={{ once: true }}
               className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
             >
-              <h4 className={`text-lg text-white mb-4 ${isRTL ? 'text-right' : ''}`}>{t('contact.whyChoose.title')}</h4>
-              <ul className={`space-y-2 text-gray-300 ${isRTL ? 'text-right' : ''}`}>
-                <li className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <h4 className="text-lg text-white mb-4">{t('contact.whyChoose.title')}</h4>
+              <ul className="space-y-2 text-gray-300">
+                <li className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
                   <CheckCircle className="w-4 h-4 text-[#6EC1E4] flex-shrink-0" />
                   <span>{t('contact.whyChoose.consultation')}</span>
                 </li>
-                <li className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <li className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
                   <CheckCircle className="w-4 h-4 text-[#6EC1E4] flex-shrink-0" />
                   <span>{t('contact.whyChoose.pricing')}</span>
                 </li>
-                <li className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <li className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
                   <CheckCircle className="w-4 h-4 text-[#6EC1E4] flex-shrink-0" />
                   <span>{t('contact.whyChoose.support')}</span>
                 </li>
-                <li className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <li className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
                   <CheckCircle className="w-4 h-4 text-[#6EC1E4] flex-shrink-0" />
                   <span>{t('contact.whyChoose.guarantee')}</span>
                 </li>
@@ -214,7 +376,7 @@ export function ContactSection() {
             viewport={{ once: true }}
           >
             <Card className="bg-white/10 backdrop-blur-lg border-white/20 text-white">
-              <CardHeader className={isRTL ? 'text-right' : ''}>
+              <CardHeader className={isRTL ? 'rtl:text-right' : ''}>
                 <CardTitle className="text-2xl text-white">{t('contact.form.title')}</CardTitle>
                 <CardDescription className="text-gray-300">
                   {t('contact.form.subtitle')}
@@ -227,20 +389,27 @@ export function ContactSection() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-8"
                   >
-                    <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle className="w-8 h-8 text-green-400" />
+                    <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle className="w-10 h-10 text-green-400" />
                     </div>
-                    <h3 className="text-xl text-white mb-2">{t('contact.form.successTitle')}</h3>
-                    <p className="text-gray-300 mb-4">
+                    <h3 className="text-2xl text-white mb-3 font-bold">
+                      {t('contact.form.successTitle')}
+                    </h3>
+                    <p className="text-gray-300 mb-6 text-lg leading-relaxed">
                       {t('contact.form.successMessage')}
                     </p>
-                    <Button
-                      onClick={() => setIsSubmitted(false)}
-                      variant="outline"
-                      className="border-white/30 text-white hover:bg-white/10"
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      {t('contact.form.sendAnother')}
-                    </Button>
+                      <Button
+                        onClick={() => setIsSubmitted(false)}
+                        variant="outline"
+                        className="border-white/10 text-white bg-white/10"
+                      >
+                        {t('contact.form.sendAnother')}
+                      </Button>
+                    </motion.div>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -298,6 +467,33 @@ export function ContactSection() {
                       )}
                     </div>
 
+                    {/* Phone */}
+                    <div>
+                      <label htmlFor="phone" className={`block text-sm text-gray-300 mb-2 ${isRTL ? 'rtl:text-right' : ''}`}>
+                        {t('contact.form.phone')} *
+                      </label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange('phone', e.target.value)}
+                        placeholder={t('contact.form.phonePlaceholder')}
+                        className={`bg-white/10 border-white/30 text-white placeholder:text-gray-400 focus:border-[#6EC1E4] ${isRTL ? 'text-right' : ''} ${
+                          errors.phone ? 'border-red-400' : ''
+                        }`}
+                      />
+                      {errors.phone && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className={`flex items-center mt-1 ${isRTL ? 'space-x-reverse space-x-1' : 'space-x-1'}`}
+                        >
+                          <AlertCircle className="w-4 h-4 text-red-400" />
+                          <span className="text-sm text-red-400">{errors.phone}</span>
+                        </motion.div>
+                      )}
+                    </div>
+
                     {/* Message */}
                     <div>
                       <label htmlFor="message" className={`block text-sm text-gray-300 mb-2 ${isRTL ? 'rtl:text-right' : ''}`}>
@@ -325,29 +521,49 @@ export function ContactSection() {
                       )}
                     </div>
 
+                    {/* Error Message */}
+                    {submitError && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className={`flex items-center p-4 bg-red-500/20 border border-red-400/30 rounded-lg ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}
+                      >
+                        <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
+                        <span className="text-red-400 text-sm">{submitError}</span>
+                      </motion.div>
+                    )}
+
                     {/* Submit Button */}
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-[#6EC1E4] to-[#4A9FD1] hover:from-[#5BADD8] hover:to-[#3A8FC5] text-white py-3 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      {isSubmitting ? (
-                        <motion.div
-                          animate={{ rotate: 360 }}
-                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                          className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                        />
-                      ) : (
-                        <div className={`flex items-center justify-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
-                          <span>{isSubmitting ? t('contact.form.sending') : t('contact.form.submit')}</span>
-                          <Send className="w-4 h-4" />
-                        </div>
-                      )}
-                    </Button>
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-gradient-to-r from-[#6EC1E4] to-[#4A9FD1] hover:from-[#5BADD8] hover:to-[#3A8FC5] text-white py-3 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-lg font-medium"
+                      >
+                        {isSubmitting ? (
+                          <div className={`flex items-center justify-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
+                            <motion.div
+                              animate={{ rotate: 360 }}
+                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                              className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                            />
+                            <span>{t('contact.form.sending')}</span>
+                          </div>
+                        ) : (
+                          <div className={`flex items-center justify-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
+                            <span>{t('contact.form.submit')}</span>
+                            <Send className="w-5 h-5" />
+                          </div>
+                        )}
+                      </Button>
+                    </motion.div>
                   </form>
                 )}
               </CardContent>
-            </Card>
+            </Card> 
           </motion.div>
         </div>
       </div>

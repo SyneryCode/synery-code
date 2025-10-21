@@ -104,7 +104,69 @@ export const projects: Project[] = [
       'Mobile-first approach'
     ]
   },
-
+  {
+  id: 'web-6',
+  title: 'Aqar Syria - Real Estate Search Platform',
+  description: 'A comprehensive digital platform for searching and listing residential and commercial properties across all Syrian governorates.',
+  fullDescription: 'A sleek, user-friendly real estate platform designed to simplify property search in Syria. Whether you\'re looking for apartments, villas, or land, this platform offers a seamless experience. Built with a Mobile-First methodology, it ensures optimal performance and beautiful, intuitive interfaces on all devices—from smartphones to desktops. Key features include an advanced search engine with filters by governorate, property type, price, and number of rooms, alongside detailed listings featuring high-resolution images to help users make informed decisions. The site was developed using HTML, CSS, and JavaScript for fast loading and smooth user interaction.',
+  category: 'web',
+  technologies: [ 'TypeScript','Tailwind CSS','React.js'],
+  image: 'https://i.ibb.co/7NvMbymM/localhost-3001-6.png',
+  detailImage: 'https://i.ibb.co/V0p17jx4/localhost-3001-7.png',
+  liveDemo: 'https://aqar-sy-fsj3.vercel.app/',
+  sourceCode: 'https://github.com/SyneryCode/aqar-sy',
+  featured: false,
+  timeline: '2 months',
+  teamSize: '3 developers',
+  achievements: [
+    'Listed over 284 properties across multiple governorates',
+    'Designed with Mobile-First approach for superior mobile user experience',
+    'Simplified UI led to a 25% increase in user engagement',
+    'Optimized page load speed by 40%, enhancing overall user satisfaction'
+  ]
+},
+{
+  id: 'web-7', 
+  title: 'Sooqna - Syrian Authentic Products Marketplace',
+  description: 'An e-commerce platform connecting customers with authentic, locally-made Syrian products for fast delivery across Syria.',
+  fullDescription: 'Sooqna is a vibrant online marketplace dedicated to showcasing and selling authentic Syrian-made goods. The platform offers users a seamless shopping experience, featuring categories such as spices, nuts, olive oil, dairy, meat, and more. Designed with a Mobile-First methodology, the site ensures a beautiful, responsive interface that works flawlessly on all devices. Key features include a powerful search bar, intuitive category navigation, detailed product listings with high-quality images, customer ratings, and an easy "Add to Cart" system for quick purchases. Built using HTML, CSS, and JavaScript, Sooqna provides a fast, reliable, and user-friendly digital storefront for Syrian artisans and producers.',
+  category: 'web',
+  technologies: [ 'TypeScript','Tailwind CSS','React.js'],
+  image: 'https://i.ibb.co/b5K9dFGN/localhost-3002-1.png', 
+  detailImage: 'https://i.ibb.co/fzQzHfR3/localhost-3002-2.png', 
+  liveDemo: 'https://example.com', 
+  sourceCode: 'https://github.com/SyneryCode/E-commerce-Platform-Design', 
+  featured: false,
+  timeline: '2 months',
+  teamSize: '3 developers',
+  achievements: [
+    'Launched with 12+ authentic product listings from local Syrian producers',
+    'Implemented a clean, category-based UI that improved user navigation by 35%',
+    'Mobile-first design ensured a 95% satisfaction rate among mobile shoppers',
+    'Integrated a simple cart system that reduced checkout steps by 50%'
+  ]
+},
+{
+  id: 'web-8', 
+  title: 'Tabibi - Syrian Doctors Appointment Booking Platform',
+  description: 'A user-friendly online platform for booking appointments with specialized doctors across Syria, offering a seamless and secure experience.',
+  fullDescription: 'Tabibi is a modern healthcare platform designed to connect patients in Syria with qualified, specialized doctors. The site provides an intuitive interface for users to browse through profiles of various medical specialists—including general practitioners, pediatricians, gynecologists, and more—complete with their qualifications, specialties, availability, and clinic locations. Key features include a clear search and filtering system by specialty, easy appointment scheduling, and a professional, trustworthy design. Built using HTML, CSS, and JavaScript with a Mobile-First approach, the platform ensures fast loading times and an optimal user experience on all devices, from smartphones to desktops. This project aims to make accessing quality healthcare in Syria simpler and more efficient.',
+  category: 'web',
+  technologies: ['HTML', 'CSS', 'Javascript'],
+  image: 'https://i.ibb.co/sJgG4YCL/localhost-3001-9.png', 
+  detailImage: 'https://i.ibb.co/whfP87wt/localhost-3001-10.png',
+  liveDemo: 'https://medical-clinic-silk.vercel.app/', 
+  sourceCode: 'https://github.com/SyneryCode/Medical-clinics-website', 
+  featured: false,
+  timeline: '2 months',
+  teamSize: '3 developers',
+  achievements: [
+    'Launched with profiles of 15+ specialized doctors from various medical fields',
+    'Implemented a simple, one-click appointment booking system that reduced user steps by 40%',
+    'Mobile-first design ensured accessibility for over 70% of users on mobile devices',
+    'Clean, professional UI increased user trust and engagement by 30%'
+  ]
+},
 
 
 
@@ -188,6 +250,30 @@ The name “Fann Al-Khatt” — meaning “The Art of Line” in Arabic — ref
     'https://i.ibb.co/vpRsTr1/photo-2025-10-18-15-26-58-4.jpg',
     'https://i.ibb.co/DHBcSYHs/photo-2025-10-18-15-26-58-3.jpg',
     'https://i.ibb.co/TD6yNhw7/photo-2025-10-18-15-26-58-2.jpg'
+  ]
+},
+{
+  id: 'design-4',
+  title: 'Mizan - Personal Finance & Inventory Management App',
+  description: 'A mobile application designed for small business owners in Syria to manage daily income, track inventory, and monitor debts with a clean, Arabic-first interface.',
+  fullDescription: 'Mizan is a practical mobile app tailored for Syrian entrepreneurs and small shop owners. It provides an intuitive, bilingual (Arabic/English) platform to simplify daily financial management. The core features include adding new sales entries with product names and prices, tracking current stock levels, and managing outstanding debts from customers. The UI design emphasizes clarity and ease of use, with a warm, minimalist aesthetic using soft colors and clear typography optimized for Arabic script. Key screens allow users to view their total daily earnings, add or remove items from inventory, and keep a record of who owes them money. Built with a Mobile-First approach, Mizan ensures a seamless experience on all smartphone sizes, helping users maintain better control over their finances and inventory without complex accounting tools.',
+  category: 'design',
+  technologies: ['Figma', 'Sketch', 'Zeroheight', 'Storybook'],
+  image: 'https://i.ibb.co/7dGPr9t0/photo-2025-10-18-15-20-48.jpg',
+  detailImage: 'https://i.ibb.co/wh2X1BwY/photo-2025-10-18-15-20-48-3.jpg',
+  featured: true,
+  timeline: '4 months',
+  teamSize: '3 designers',
+  achievements: [
+    'Designed a fully localized Arabic-first UI/UX experience for small business owners',
+    'Simplified the process of recording sales and inventory, reducing user steps by 50%',
+    'User-tested with 30+ small business owners in Damascus for real-world feedback',
+    'Created a visually calm and organized interface that reduces data entry errors'
+  ],
+  designImages: [
+    'https://i.ibb.co/bgqKw0dC/photo-2025-10-18-15-20-48-2.jpg',
+    'https://i.ibb.co/wh2X1BwY/photo-2025-10-18-15-20-48-3.jpg',
+    'https://i.ibb.co/7dGPr9t0/photo-2025-10-18-15-20-48.jpg'
   ]
 }
   

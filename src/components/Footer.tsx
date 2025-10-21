@@ -62,9 +62,7 @@ export function Footer() {
                   Synery <span className="text-[#6EC1E4]">Code</span>
                 </span>
               </div>
-              <p className={`text-gray-300 leading-relaxed mb-6 max-w-md ${isRTL ? 'text-right' : ''}`}>
-                {t('footer.description')}
-              </p>
+
               
 
               <div className="space-y-3">

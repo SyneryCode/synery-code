@@ -88,16 +88,14 @@ export function ContactSection() {
         message: formData.message
       };
 
-      // ⚡ الحل النهائي: استخدام URL مباشر في جميع البيئات
+
       const isDevelopment = import.meta.env.DEV;
       let apiUrl;
 
-      if (isDevelopment) {
-        // في development استخدم proxy
-        apiUrl = '/api/send';
+      if (isDevelopment) {        apiUrl = '/api/send';
         console.log('🔵 [DEVELOPMENT MODE] Using proxy:', apiUrl);
       } else {
-        // في production استخدم URL المباشر
+ 
         apiUrl = 'https://syniery-code.onrender.com/api/send';
         console.log('🟢 [PRODUCTION MODE] Using direct URL:', apiUrl);
       }

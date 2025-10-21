@@ -133,6 +133,7 @@ export const projects: Project[] = [
       'https://i.ibb.co/gLkcqhyR/photo-2025-10-18-16-11-38.jpg'
     ]
   },
+
   {
     id: 'design-2',
     title: 'ModernUI - Design System',
@@ -157,6 +158,38 @@ export const projects: Project[] = [
       'https://i.ibb.co/SWwGwpX/photo-2025-10-18-15-28-00-5.jpg'
     ]
   },
+  {
+  id: 'design-3',
+  title: 'Fann Al-Khatt – Arabic Calligraphy Learning App',
+  description: 'An immersive mobile app that teaches the art of Arabic calligraphy through interactive lessons, step-by-step stroke guidance, and personalized practice sessions — making traditional art accessible to modern learners.',
+  fullDescription: `Fann Al-Khatt is a beautifully crafted mobile application designed to democratize the ancient art of Arabic calligraphy for beginners and enthusiasts alike. The app offers a guided journey from foundational strokes to mastering complex scripts like Thuluth, Diwani, and Naskh — all presented through intuitive animations, real-time feedback, and adaptive learning paths.
+
+The user experience blends traditional aesthetics with modern interaction design: elegant typography, warm earthy tones, and hand-drawn illustrations create an inviting atmosphere that honors the heritage of Arabic script. Key features include:
+- Interactive stroke tracing with progress tracking
+- Daily practice challenges and milestone rewards
+- Script gallery with historical context and visual examples
+- Customizable workspace for saving and sharing creations
+
+The name “Fann Al-Khatt” — meaning “The Art of Line” in Arabic — reflects both the precision of calligraphy and the creative expression it enables. Designed with cultural authenticity and pedagogical clarity, the app serves as a digital gateway into one of the most revered art forms of the Arab world.`,
+  category: 'design',
+  technologies: ['Figma', 'Adobe Illustrator', 'After Effects', 'Procreate'],
+  image: 'https://i.ibb.co/wFdYQMKT/photo-2025-10-18-15-26-58.jpg',
+  detailImage: 'https://i.ibb.co/j9nMnG5H/photo-2025-10-18-15-26-58.jpg',
+  featured: true,
+  timeline: '4 months',
+  teamSize: '3 (UI/UX Designer, Motion Designer, Content Strategist)',
+  achievements: [
+    'Designed 3 core calligraphic scripts with animated stroke guides',
+    'Implemented adaptive difficulty levels based on user performance',
+    'Created a culturally resonant visual identity rooted in traditional tools (reed pen, inkwell)',
+    'Featured in regional edtech showcase for innovative language learning tools'
+  ],
+  designImages: [
+    'https://i.ibb.co/vpRsTr1/photo-2025-10-18-15-26-58-4.jpg',
+    'https://i.ibb.co/DHBcSYHs/photo-2025-10-18-15-26-58-3.jpg',
+    'https://i.ibb.co/TD6yNhw7/photo-2025-10-18-15-26-58-2.jpg'
+  ]
+}
   
   
 ];

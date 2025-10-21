@@ -40,7 +40,7 @@ export function AboutSection() {
     { number: '3+', labelKey: 'about.stats.yearsExperience' },
     { number: '10+', labelKey: 'about.stats.projectsCompleted' },
     { number: '💰', labelKey: 'about.stats.affordablePricing' },
-    { number: '99%', labelKey: 'about.stats.successRate' }
+    { number: '100%', labelKey: 'about.stats.successRate' }
   ];
 
   const achievementKeys = [

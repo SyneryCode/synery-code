@@ -179,7 +179,7 @@ export function PortfolioSection({ onBack, onProjectClick }: PortfolioSectionPro
             </motion.div>
           </div>
 
-          {/* Enhanced Category Filter */}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -224,7 +224,7 @@ export function PortfolioSection({ onBack, onProjectClick }: PortfolioSectionPro
                         </Badge>
                       </div>
 
-                      {/* Active indicator */}
+
                       {isActive && (
                         <motion.div
                           layoutId="activeCategory"

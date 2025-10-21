@@ -14,6 +14,7 @@ export const translations = {
       projectsDelivered: 'Projects Delivered',
       happyClients: 'Happy Clients',
       supportAvailable: 'Support Available',
+      affordablePricing: 'Affordable Pricing',
       description: 'Professional web development, innovative design, and cutting-edge solutions for businesses ready to dominate the digital landscape.',
       ctaTitle: 'Ready to Transform Your Digital Presence?',
       ctaSubtitle: 'Let\'s discuss how we can help you achieve your goals with our comprehensive digital solutions.',
@@ -46,6 +47,7 @@ export const translations = {
         projectsCompleted: 'Projects Completed',
         happyClients: 'Happy Clients',
         successRate: 'Success Rate',
+        affordablePricing: 'Affordable Pricing',
       },
       featuresTitle: 'What Sets Us Apart',
       expertise: {
@@ -146,10 +148,24 @@ export const translations = {
     portfolio: {
       title: 'Our Portfolio',
       subtitle: 'Explore our latest projects and see how we\'ve helped businesses transform their digital presence',
+      successRate: 'Success Rate', 
+      projectsCompleted: 'Projects Completed',
       viewProject: 'View Project',
       sourceCode: 'Source Code',
       technologies: 'Technologies Used',
       viewAll: 'View All Projects',
+      back: 'Previous Page ',
+      backToPortfolio: 'Back to Portfolio',
+      projectOverview: 'Project Overview',
+      projectInfo: 'Project Information',
+      timeline: 'Timeline',
+      teamSize: 'Team Size',
+      category:'category',
+      designGallery: 'Design Gallery',
+      keyAchievements: 'Key Achievements',
+      featured: 'Featured',
+       learnMore: 'Learn More',
+       viewCode: 'View Code',
       categories: {
         all: 'All Projects',
         web: 'Web Development',
@@ -167,7 +183,7 @@ export const translations = {
     },
     
     footer: {
-      description: 'Professional web development and digital solutions for modern businesses.',
+ 
       quickLinks: 'Quick Links',
       services: 'Services',
       contact: 'Contact',
@@ -199,18 +215,19 @@ export const translations = {
       getStarted: 'ابدأ مشروعك',
     },
     
-    hero: {
-      title: 'حوّل رؤيتك الرقمية إلى واقع',
-      subtitle: 'حلول رقمية احترافية',
-      projectsDelivered: 'مشروع منجز',
-      happyClients: 'عميل راضٍ',
-      supportAvailable: 'دعم متاح',
-      description: 'تطوير ويب احترافي، تصميم مبتكر، وحلول متطورة للشركات الجاهزة للهيمنة على المشهد الرقمي.',
-      ctaTitle: 'جاهز لتحويل حضورك الرقمي؟',
-      ctaSubtitle: 'لنناقش كيف يمكننا مساعدتك في تحقيق أهدافك بحلولنا الرقمية الشاملة.',
-      cta: 'ابدأ مشروعك اليوم',
-      ctaSecondary: 'اطلع على أعمالنا',
-    },
+hero: {
+  title: 'حوّل رؤيتك الرقمية إلى واقع',
+  subtitle: 'حلول رقمية احترافية',
+  projectsDelivered: 'مشاريع منجزة',
+  happyClients: 'عملاء سعداء',
+  supportAvailable: 'دعم متاح',
+  affordablePricing: 'أسعار منافسة', 
+  description: 'تطوير ويب احترافي، تصميم مبتكر، وحلول متطورة للشركات الجاهزة للهيمنة على المشهد الرقمي.',
+  ctaTitle: 'جاهز لتحويل حضورك الرقمي؟',
+  ctaSubtitle: 'لنناقش كيف يمكننا مساعدتك في تحقيق أهدافك بحلولنا الرقمية الشاملة.',
+  cta: 'ابدأ مشروعك اليوم',
+  ctaSecondary: 'اطلع على أعمالنا',
+},
     
     services: {
       title: 'خدماتنا',
@@ -233,10 +250,11 @@ export const translations = {
       title: 'لماذا تختارنا',
       subtitle: 'شريكك التقني الموثوق',
       stats: {
-        yearsExperience: 'سنة خبرة',
-        projectsCompleted: 'مشروع مكتمل',
-        happyClients: 'عميل راضٍ',
-        successRate: 'معدل نجاح',
+        yearsExperience: 'سنوات خبرة', 
+        projectsCompleted: 'مشاريع منجزة', 
+        happyClients: 'عملاء سعداء', 
+        successRate: 'معدل النجاح',
+        affordablePricing: 'اسعار منافسة',
       },
       featuresTitle: 'ما يميزنا',
       expertise: {
@@ -337,10 +355,24 @@ export const translations = {
     portfolio: {
       title: 'معرض أعمالنا',
       subtitle: 'استكشف أحدث مشاريعنا وشاهد كيف ساعدنا الشركات في تحويل حضورها الرقمي',
+            successRate: 'معدل النجاح',
+      projectsCompleted: 'مشاريع مكتملة',
       viewProject: 'عرض المشروع',
       sourceCode: 'الكود المصدري',
       technologies: 'التقنيات المستخدمة',
       viewAll: 'عرض جميع المشاريع',
+      back: 'الصفحة السابقة ',
+       backToPortfolio: 'العودة إلى المعرض',
+       projectOverview: 'نظرة عامة على المشروع',
+       projectInfo: 'معلومات المشروع',
+       timeline: 'الجدول الزمني',
+       teamSize: 'حجم الفريق',
+        category:'الفئة',
+        designGallery: 'معرض التصميم',
+        keyAchievements: 'الإنجازات الرئيسية',
+        featured: 'مميز',
+        learnMore: 'عرض المزيد',
+        viewCode: 'عرض الكود',
       categories: {
         all: 'جميع المشاريع',
         web: 'تطوير المواقع',
@@ -358,7 +390,7 @@ export const translations = {
     },
     
     footer: {
-      description: 'تطوير ويب احترافي وحلول رقمية للشركات الحديثة.',
+
       quickLinks: 'روابط سريعة',
       services: 'خدمات',
       contact: 'اتصل بنا',
